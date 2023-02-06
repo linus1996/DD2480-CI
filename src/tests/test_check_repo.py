@@ -8,7 +8,7 @@ class TestCheck_repo(unittest.TestCase):
         repo = 'DD2480-CI'
         branch = 'test-branch-missing-script'
         result = check(url, repo, branch)
-        self.assertEqual(result.returncode, 0)
+        self.assertEqual(result.returncode, 127)
 
     def test_check_pos(self):
         url = 'https://github.com/linus1996/DD2480-CI.git'

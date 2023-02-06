@@ -3,11 +3,9 @@ import json
 
 app = Flask(__name__)
 
-list = ['AAAAAAAAAAAAAa', 'Bunny', 'Cat', 'Duck', 'E']
-
 @app.route('/', methods=['GET'])
-def test1():
-    return jsonify({'GET': [item for item in list]})
+def handle_get():
+    return render_template('index.html')
 
 @app.route('/', methods=['POST'])
 def handle_post():

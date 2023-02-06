@@ -5,10 +5,10 @@ def check(url, repo, branch):
     s.run(['git', 'clone', url])                                 
     s.run(['git', '-C', repo, 'checkout', branch])           
     
-    if(s.run(['test', '-f', 'scripts.sh']) == 1):
+    if(s.run(['test', '-f', 'src/scripts.sh'], shell=True) == 1):
         return 'Error: Missing compilation/test script file.'
     
-    status = s.run(['sh', repo + '/scripts.sh'])        
-    s.run(['rm', '-rf', repo])
+    status = s.run(['sh', repo + '/src/scripts.sh'], shell=True)        
+    s.run(['rm', '-rf', repo], shell=True)
 
     return status

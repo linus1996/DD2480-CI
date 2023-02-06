@@ -1,4 +1,3 @@
-"""
 import unittest
 from src.check_repo import *
 
@@ -10,4 +9,3 @@ class TestCheck_repo(unittest.TestCase):
         branch = 'test-branch-compilation-success'
         result = check(url, repo, branch)
         self.assertEqual(result.returncode, 3)
-"""

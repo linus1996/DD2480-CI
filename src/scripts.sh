@@ -10,7 +10,7 @@ then
 fi
 
 # run tests
-python3 -m unittest discover src/test/
+python3 -m unittest discover
 if [ $? -eq 1 ]
 then
 	exit 2

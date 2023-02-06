@@ -11,10 +11,8 @@ def test1():
 
 @app.route('/', methods=['POST'])
 def handle_post():
-    if not request.is_json:
-        return "idk why it wasn't json but in this case maybe we render_template('something.html) or something"
-    json_data = request.get_json()
-    return json_data
+    data = request.form['payload']
+    return jsonify(data)
 
 # main driver function
 if __name__ == '__main__':

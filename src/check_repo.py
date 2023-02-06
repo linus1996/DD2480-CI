@@ -2,8 +2,8 @@ import json
 import subprocess as s
 
 def check(url, repo, branch):                                                                                                                                                                                                                                                                           
-    s.run(['git', 'clone', url])                                 
-    s.run(['git', '-C', repo, 'checkout', branch])           
+    s.run(['git', 'clone', url], shell=True)                                 
+    s.run(['git', '-C', repo, 'checkout', branch], shell=True)           
     
     if(s.run(['test', '-f', 'src/scripts.sh'], shell=True) == 1):
         return 'Error: Missing compilation/test script file.'

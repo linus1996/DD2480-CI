@@ -9,5 +9,12 @@ then
     exit 1
 fi
 
+# run tests
+python3 -m unittest discover src/test/
+if [ $? -eq 1 ]
+then
+	exit 2
+fi
+
 # all is well
 exit 0

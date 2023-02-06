@@ -1,4 +1,3 @@
-import json
 import subprocess as s
 
 def check(url, repo, branch):                                                                                                                                                                                                                                                                           

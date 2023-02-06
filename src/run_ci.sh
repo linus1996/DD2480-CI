@@ -2,7 +2,7 @@
 cd DD2480-CI
 
 # compile all with py_compile
-python -m py_compile src/main/*.py
+python -m py_compile src/*.py
 if [$? -eq 1]
 then 
     exit 1

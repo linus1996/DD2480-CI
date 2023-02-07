@@ -8,3 +8,13 @@ A small continuous integration CI server. This CI server only contains the core 
 ## Running the code
 
 ## Contributors
+
+Axel Lervik
+
+Klara Alpsten
+
+Linus Below Blomkvist
+
+Maegan Chen Peralta
+
+Ali Asbai

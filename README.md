@@ -5,7 +5,7 @@ A small continuous integration CI server. This CI server only contains the core 
 
 ## How to use
 
-## Running the code
+### Running the code
 
 ## Statement of Contributions
 

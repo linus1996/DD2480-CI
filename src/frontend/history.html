@@ -10,7 +10,7 @@
     
     <div class="container-fluid">
         <div class="row jumbotron text-center mt-3">
-            <h2 class="display-5">CI Server Documentation</h2>
+            <h2 class="display-5">History</h2>
         </div>
         <nav class="navbar justify-content-center">
             <ul class="nav">
@@ -28,7 +28,33 @@
                 </li>
             </ul>
         </nav>
-        {{replace}}
+
+        <div class="mx-4">
+            <table class="table table-bordered text-light text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Commit ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Commit URL</th>
+                        <th scope="col">Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for build in build_all %}
+                    <tr>
+                        <td><a href="../app.py/{{ builds['build_id'] }}">Build {{ build['build_id'] }}</a></td>
+                        <td> {{builds['date_rec']}} </td>
+                        <td> {{builds['status']}} </td>
+                        <td> {{builds['commit_url']}} </td>
+                        <td> {{builds['stderr']}} </td>
+                    </tr>
+                    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
     </div>
     
 </body>

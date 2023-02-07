@@ -15,9 +15,9 @@ Ali:
 
 Axel:
 
-Klara:
+Klara: Creating initial issues, implementing core CI feature #1 and #2 together with Ali, some documentation, writing Essence document.
 
-Linus: Added notifications.py, README.md and essence2.txt
+Linus:
 
 Maegan:
 
@@ -32,5 +32,3 @@ Klara Alpsten
 Linus Below Blomkvist
 
 Maegan Chen Peralta
-
-

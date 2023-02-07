@@ -22,7 +22,7 @@ def handle_post():
     # run compile script and test script
     result = check(clone_url, repo_url, branch_name)
     # update status based on result
-    status = 'success' if result == 0 else 'failure'
+    status = 'success' if result.returncode == 0 else 'failure'
     update_status(data, status, config.api_token)
     # insert into database
     

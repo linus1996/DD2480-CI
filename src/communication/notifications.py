@@ -16,16 +16,16 @@ def update_status(json_payload, status, auth_token):
 	try:
 		if status == 'pending':
 			payload = {'state':status, 
-			'description':'The CI service is currently running',
-			'context': 'CI for group 17'}
+			'description':'CI server is running',
+			'context': 'CI python server for group 17'}
 		elif status == 'success':
 			payload = {'state':status, 
-			'description':'The build succeeded!',
-			'context': 'CI for group 17'}
+			'description':'Build success',
+			'context': 'CI python server for group 17'}
 		elif status == 'failure':
 			payload = {'state':status, 
-			'description':'The build failed',
-			'context': 'CI for group 17'}
+			'description':'Build failed',
+			'context': 'CI python server for group 17'}
 		post_req = requests.post(post_url, json=payload)
 		return post_req
 

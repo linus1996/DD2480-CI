@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request, render_template
-from check_repo import check
-from communication.notifications import update_status
+from src.check_repo import check
+from src.communication.notifications import update_status
 from src import config
-from server.history import History
+from src.server.history import History
 
 # Application:
 app = Flask(__name__)
@@ -13,6 +13,9 @@ def handle_get():
 
 @app.route('/', methods=['POST'])
 def handle_post():
+    """
+    This POST request compiles and tests a repository, POSTS the status of the commit back to GitHub and inserts the build information into a database.
+    """
     data = request.form
     # set update status to pending
     update_status(data, 'pending', config.api_token)
@@ -25,9 +28,6 @@ def handle_post():
     build = history.serialize(data['commit_id'], data['commits'][0]['timestamp'], status, data['commits'][0]['url'], result.stderr if result.stderr is not None else '') # TODO: check whether or not the commit extraction is correct
     history.insert_build(build)
     return render_template('index.html')
-
-handle_post.__doc__
-'This POST request compiles and tests a repository, POSTS the status of the commit back to GitHub and  inserts the build information into a database.'
 
 # main driver function
 if __name__ == '__main__':

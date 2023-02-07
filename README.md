@@ -17,7 +17,7 @@ Axel:
 
 Klara:
 
-Linus:
+Linus: Added notifications.py, README.md and essence2.txt
 
 Maegan:
 
@@ -32,3 +32,5 @@ Klara Alpsten
 Linus Below Blomkvist
 
 Maegan Chen Peralta
+
+

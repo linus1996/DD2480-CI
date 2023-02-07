@@ -7,6 +7,8 @@ A small continuous integration CI server. This CI server only contains the core 
 
 ## Running the code
 
+## Statement of Contributions
+
 ## Contributors
 
 Axel Lervik

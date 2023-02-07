@@ -26,6 +26,9 @@ def handle_post():
     history.insert_build(build)
     return render_template('index.html')
 
+handle_post.__doc__
+'This POST request compiles and tests a repository, POSTS the status of the commit back to GitHub and  inserts the build information into a database.'
+
 # main driver function
 if __name__ == '__main__':
     global history

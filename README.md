@@ -11,7 +11,7 @@ A small continuous integration CI server. This CI server only contains the core 
 
 The program was written by the group members together, often in meetings involving all or most of the members. Several parts of the startup, such as the code and git structure, was done collectively by most of the group. The rest of the work was divided among the members, see below.
 
-Ali:
+Ali: Implemented core CI feature #1 an #2 with Klara, wrote README, wrote documentations, created test branches and tests for CI server.
 
 Axel:
 

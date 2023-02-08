@@ -6,7 +6,6 @@ from communication.notifications import update_status
 import config
 from server.history import History
 from json import loads, dumps
-from urllib.parse import quote
 
 # Application:
 app = Flask(__name__)
@@ -18,19 +17,13 @@ def handle_get():
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
-    # return render_template('history.html')
-    try:
-        return render_template('history.html', buildlist=history.fetch_all())
-    except:
-        return render_template('history.html')
+    return render_template('history.html')
+    return render_template('history.html', buildlist=history.fetch_all())
 
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
-    # return render_template('build.html', build = {'url':'https://github.com'})
-    try:
-        return render_template('build.html', build=history.fetch(id))
-    except:
-        return render_template('build.html')
+    return render_template('build.html', build = {'url':'https://github.com'})
+    return render_template('build.html', build=history.fetch(id))
 
 @app.route('/', methods=['POST'])
 def handle_post():
@@ -45,24 +38,15 @@ def handle_post():
     timestamp = data['head_commit']['timestamp']
     commit_url = data['head_commit']['url']
     # set update status to pending
-    print("calling update_status(",id, status_url, "'pending', <token>)")
     update_status(id, status_url, 'pending', config.api_token)
-    print("status updated")
-    print("running check(...)")
     result = check(clone_url, repo_NAME, sha)
     # update status based on result
     status = 'success' if result.returncode == 0 else 'failure'
-    print("check finished with result "+status)
-    print("calling update_status(",id, status_url, status, "<token>)")
     update_status(id, status_url, status, config.api_token)
-    print("status updated")
     # insert into database
     build = history.serialize(commit_id, timestamp, status, commit_url, result.stderr if result.stderr is not None else '')
     print("calling insert_build("+dumps(build)+")")
-    try:
-        history.insert_build(build)
-    except:
-        return 'Duplicate key'
+    history.insert_build(build)
     print("build inserted")
     return 'POST REQUEST PROCESSED SUCCESSFULLY'
     # return render_template('index.html')

@@ -1,4 +1,7 @@
+import pkg_resources
+pkg_resources.require("pymongo==4.1.1")
 from pymongo import MongoClient
+from urllib.parse import quote_plus
 
 class History:
     def __init__(self, mongo_name,
@@ -8,11 +11,15 @@ class History:
                  mongo_pass):
 
         self.mongo_client = MongoClient(
-            'mongodb://%s:%s@%s:%s/%s' % (mongo_user,
-                                          mongo_pass,
-                                          mongo_ip,
-                                          mongo_port,
-                                          mongo_name))
+            'mongodb://%s:%s@%s:%s/%s' % 
+                (
+                    quote_plus(mongo_user),
+                    quote_plus(mongo_pass),
+                    quote_plus(mongo_ip),
+                    quote_plus(mongo_port),
+                    quote_plus(mongo_name)
+                    )
+            )
 
         self.db = self.mongo_client[mongo_name]
 

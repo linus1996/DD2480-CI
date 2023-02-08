@@ -6,6 +6,7 @@ from communication.notifications import update_status
 import config
 from server.history import History
 from json import loads, dumps
+from urllib.parse import quote
 
 # Application:
 app = Flask(__name__)
@@ -26,7 +27,10 @@ def show_builds():
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
     # return render_template('build.html', build = {'url':'https://github.com'})
-    return render_template('build.html', build=history.fetch(id))
+    try:
+        return render_template('build.html', build=history.fetch(id))
+    except:
+        return render_template('build.html')
 
 @app.route('/', methods=['POST'])
 def handle_post():

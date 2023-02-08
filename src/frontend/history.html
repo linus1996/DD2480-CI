@@ -12,7 +12,7 @@
         <div class="row jumbotron text-center mt-3">
             <h2 class="display-5">History</h2>
         </div>
-        <nav class="navbar justify-content-center">
+        <nav class="navbar justify-content-center  mb-5">
             <ul class="nav">
                 <li class="nav-item">
                   <a class="nav-link" href="server.html">Server</a>
@@ -43,7 +43,7 @@
                 <tbody>
                     {% for build in build_all %}
                     <tr>
-                        <td><a href="../app.py/{{ builds['build_id'] }}">Build {{ build['build_id'] }}</a></td>
+                        <td><a href="../app.py/{{ builds['build_id'] }}">Build {{builds['build_id'] }}</a></td>
                         <td> {{builds['date_rec']}} </td>
                         <td> {{builds['status']}} </td>
                         <td> {{builds['commit_url']}} </td>

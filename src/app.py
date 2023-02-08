@@ -12,8 +12,18 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def handle_get():
-    return jsonify('GET REQUEST RECEIVED')
+    # return jsonify('GET REQUEST RECEIVED')
     return render_template('index.html')
+
+@app.route('/builds', methods=['GET'])
+def show_builds():
+    return render_template('history.html')
+    return render_template('history.html', buildlist=history.fetch_all())
+
+@app.route('/builds/<id>', methods=['GET'])
+def show_build(id):
+    return render_template('build.html', build = {'url':'https://github.com'})
+    return render_template('build.html', build=history.fetch(id))
 
 @app.route('/', methods=['POST'])
 def handle_post():
@@ -37,7 +47,7 @@ def handle_post():
     build = history.serialize(commit_id, timestamp, status, commit_url, result.stderr if result.stderr is not None else '')
     print("calling insert_build("+dumps(build)+")")
     history.insert_build(build)
-    print("build iserted")
+    print("build inserted")
     return 'POST REQUEST PROCESSED SUCCESSFULLY'
     # return render_template('index.html')
 

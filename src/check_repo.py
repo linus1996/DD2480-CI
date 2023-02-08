@@ -15,4 +15,6 @@ def check(url, repo, branch):
         status = s.run(['sh', 'scripts.sh'])  
 
     s.run(['rm', '-rf', repo])
+    if status.returncode == 0:
+        status.stderr = 'Compilation and tests succeeded!'
     return status

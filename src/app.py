@@ -17,12 +17,15 @@ def handle_get():
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
-    return render_template('history.html')
-    return render_template('history.html', buildlist=history.fetch_all())
+    # return render_template('history.html')
+    try:
+        return render_template('history.html', buildlist=history.fetch_all())
+    except:
+        return render_template('history.html')
 
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
-    return render_template('build.html', build = {'url':'https://github.com'})
+    # return render_template('build.html', build = {'url':'https://github.com'})
     return render_template('build.html', build=history.fetch(id))
 
 @app.route('/', methods=['POST'])

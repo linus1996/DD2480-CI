@@ -9,17 +9,25 @@ class History:
                  mongo_port,
                  mongo_user,
                  mongo_pass):
+        
+        self.mongo_client = MongoClient("mongodb+srv://group17:dd2480group17@cluster0.undpmzo.mongodb.net/?retryWrites=true&w=majority")
 
-        self.mongo_client = MongoClient(
-            'mongodb://%s:%s@%s:%s/%s' % 
-                (
-                    quote_plus(mongo_user),
-                    quote_plus(mongo_pass),
-                    quote_plus(mongo_ip),
-                    quote_plus(mongo_port),
-                    quote_plus(mongo_name)
-                    )
-            )
+        # self.mongo_client = MongoClient(
+        #     # 'mongodo://group17:130.229.177.245/32'
+        #     'mongodb+srv://%s:%s@%s:%s/%s' % 
+        #         (
+        #             mongo_user,
+        #             mongo_pass,
+        #             mongo_ip,
+        #             mongo_port,
+        #             mongo_name
+        #             # quote_plus(mongo_user),
+        #             # quote_plus(mongo_pass),
+        #             # quote_plus(mongo_ip),
+        #             # quote_plus(mongo_port),
+        #             # quote_plus(mongo_name)
+        #             )
+        #     )
 
         self.db = self.mongo_client[mongo_name]
 

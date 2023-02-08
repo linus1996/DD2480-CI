@@ -8,11 +8,11 @@
 </head>
 <body class="bg-dark text-light">
     
-    <div class="container-fluid">
+    <div class="container-fluid mx-auto">
         <div class="row jumbotron text-center mt-3">
             <h2 class="display-5">Notifications</h2>
         </div>
-        <nav class="navbar justify-content-center">
+        <nav class="navbar justify-content-center mb-5">
             <ul class="nav">
                 <li class="nav-item">
                   <a class="nav-link" href="server.html">Server</a>
@@ -28,6 +28,47 @@
                 </li>
             </ul>
         </nav>
+        <div class="row justify-content-center">
+            <table class="table table-bordered text-light w-auto">
+                <tr>
+                    <td colspan="2" class="lead py-2 text-center" style="font-family:monospace;">def update_status(json_payload, status, auth_token):</td>
+                </tr>
+                <tr>
+                    <th><small>Description</small></th>
+                    <td class="pb-4"><small>sends a POST request to the GitHub API to update the build success</small></td>
+                </tr>
+                <tr>
+                    <th><small style="font-weight:bold;"><span>Parameters</span></small></th>
+                    <td>
+                        <ul>
+                            <li class="pb-4" style="font-family:monospace;">
+                                json_payload
+                                <br> <small style="font-family:sans-serif;">The JSON data coming from the push param status - </small>
+                            </li>
+                            <li class="pb-4" style="font-family:monospace;">
+                                status
+                                <br> <small style="font-family:sans-serif;">The status of the build retrieved from `requests`. The status of the commit can be 'pending', 'success' or 'failure'.</small>
+                            </li>
+                            <li class="pb-4" style="font-family:monospace;">
+                                auth_token
+                                <br> <small style="font-family:sans-serif;">The access token must be included to authenticate to GitHub</small>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th><small>Return</small></th>
+                    <td>            
+                        <ul>
+                            <li class="pb-4" style="font-family:monospace;">
+                                post_req
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
 
         
     </div>

@@ -41,15 +41,24 @@ def handle_post():
     timestamp = data['head_commit']['timestamp']
     commit_url = data['head_commit']['url']
     # set update status to pending
+    print("calling update_status(",id, status_url, "'pending', <token>)")
     update_status(id, status_url, 'pending', config.api_token)
+    print("status updated")
+    print("running check(...)")
     result = check(clone_url, repo_NAME, sha)
     # update status based on result
     status = 'success' if result.returncode == 0 else 'failure'
+    print("check finished with result "+status)
+    print("calling update_status(",id, status_url, status, "<token>)")
     update_status(id, status_url, status, config.api_token)
+    print("status updated")
     # insert into database
     build = history.serialize(commit_id, timestamp, status, commit_url, result.stderr if result.stderr is not None else '')
     print("calling insert_build("+dumps(build)+")")
-    history.insert_build(build)
+    try:
+        history.insert_build(build)
+    except:
+        return 'Duplicate key'
     print("build inserted")
     return 'POST REQUEST PROCESSED SUCCESSFULLY'
     # return render_template('index.html')

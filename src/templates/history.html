@@ -24,7 +24,7 @@
                   <a class="nav-link" href="tests">Tests</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="history">History</a>
+                    <a class="nav-link" href="builds">History</a>
                 </li>
             </ul>
         </nav>
@@ -41,9 +41,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for build in buildlist %}
+                    {% for build in buildlist|reverse %}
                     <tr>
-                        <td><a href="/{{ build['_id'] }}">Build {{build['_id'] }}</a></td>
+                        <td><a href="/builds/{{ build['_id'] }}">Build {{build['_id'] }}</a></td>
                         <td> {{build['date']}} </td>
                         <td> {{build['status']}} </td>
                         <!-- <td> {{build['url']}} </td>

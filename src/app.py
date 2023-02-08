@@ -6,7 +6,6 @@ from communication.notifications import update_status
 import config
 from server.history import History
 from json import loads, dumps
-from urllib.parse import quote
 
 # Application:
 app = Flask(__name__)
@@ -40,8 +39,9 @@ def handle_post():
     status_url = data['repository']['statuses_url']
     clone_url = data['repository']['clone_url']
     repo_NAME = data['repository']['name']
-    sha = data['ref'].split('/')[-1]
-    commit_id = data['head_commit']['id']
+    # sha = data['ref'].split('/')[-1]
+    sha = id
+    commit_id = id
     timestamp = data['head_commit']['timestamp']
     commit_url = data['head_commit']['url']
     # set update status to pending

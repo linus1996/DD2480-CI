@@ -19,8 +19,10 @@ def update_status(sha, status_url, status, auth_token):
             'description':'Build failed',
             'context': 'CI python server for group 17'}
         post_req = requests.post(post_url, json=payload)
+        print("Status set with return code", post_req)
         return post_req
 
     except Exception:
+        print("Couldn't set status D:")
         return None
         

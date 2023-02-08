@@ -28,7 +28,7 @@ class History:
         builds.insert_one(document)
 
     def fetch(self, build_id):
-        return self.db['builds'].find_one({"buildID": float(build_id)})
+        return self.db['builds'].find_one({"_id": float(build_id)})
 
     def fetch_n_last(self, n):
         nr_documents = self.db['builds'].count()
@@ -42,7 +42,7 @@ class History:
     @staticmethod
     def serialize(build_id, date_rec, status, commit_url, stderr):
         return {
-            "ID": build_id,
+            "_id": build_id,
             "date": date_rec,
             "status": status,
             "url": commit_url,

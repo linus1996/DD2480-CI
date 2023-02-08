@@ -6,7 +6,6 @@ from communication.notifications import update_status
 import config
 from server.history import History
 from json import loads, dumps
-from urllib.parse import quote
 
 # Application:
 app = Flask(__name__)

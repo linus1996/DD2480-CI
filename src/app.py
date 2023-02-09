@@ -12,11 +12,17 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def handle_get():
+    """
+    Receives a GET request and sends back a response.
+    """
     # return jsonify('GET REQUEST RECEIVED')
     return render_template('index.html')
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
+    """
+    Fetches and displays information of all builds on`history.html`.
+    """
     # return render_template('history.html')
     try:
         return render_template('history.html', buildlist=history.fetch_all())
@@ -25,6 +31,9 @@ def show_builds():
 
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
+    """
+    Fetches and displays information of a particular build on`build.html`.
+    """
     # return render_template('build.html', build = {'url':'https://github.com'})
     try:
         return render_template('build.html', build=history.fetch(id))
@@ -32,7 +41,10 @@ def show_build(id):
         return render_template('build.html')
 
 @app.route('/', methods=['POST'])
-def handle_post():
+def handle_post():    
+    """
+    Receives a payload from a webhook, parses it and sends back the result.
+    """
     try:
         data = loads(request.form['payload'])
         # extract relevant data

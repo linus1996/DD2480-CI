@@ -13,12 +13,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def handle_get():
-    # return jsonify('GET REQUEST RECEIVED')
     return render_template('index.html')
+
+@app.route('/documentation', methods=['GET'])
+def handle_get():
+    return render_template('documentation.html')
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
-    # return render_template('history.html')
     try:
         return render_template('history.html', buildlist=history.fetch_all())
     except:
@@ -26,7 +28,6 @@ def show_builds():
 
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
-    # return render_template('build.html', build = {'url':'https://github.com'})
     try:
         return render_template('build.html', build=history.fetch(id))
     except:

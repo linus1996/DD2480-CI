@@ -17,7 +17,7 @@ Axel:
 
 Klara: Creating initial issues, implementing core CI feature #1 and #2 together with Ali, some documentation, writing Essence document.
 
-Linus: Created notification file with Axel, wrote README, wrote documentations, writing Essence document.
+Linus: Created notification file with Axel, wrote README, wrote documentations, wrote Essence document.
 
 Maegan:
 

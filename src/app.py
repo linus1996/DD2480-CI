@@ -20,7 +20,7 @@ def handle_get():
 
 @app.route('/documentation', methods=['GET'])
 def show_documentation():
-    return render_template('app.html')
+    return render_template('documentation.html')
 
 @app.route('/builds', methods=['GET'])
 def show_builds():

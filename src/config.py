@@ -10,6 +10,9 @@ mongo_user = ''
 mongo_pass = ''
 
 def init(conf_file = None):
+    """
+    A method for initializing the configuration and assigns values to the global variables.
+    """
     global api_token
     global mongo_database_name
     global mongo_ip

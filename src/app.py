@@ -75,7 +75,7 @@ def handle_post():
         except:
             return 'Duplicate key'
         print("build inserted")
-        return 'POSt REQUEST PROCESSED SUCCESSFULLY'
+        return 'POST REQUEST PROCESSED SUCCESSFULLY'
     except:
         return render_template('index.html')
 

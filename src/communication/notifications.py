@@ -1,7 +1,11 @@
 import requests
 
 def update_status(sha, status_url, status, auth_token):
-    
+    """
+	A method for creating status updates for the CI server.
+	Input: A json payload containing repository information, the current status of the CI server and an authorization token.
+	Output: A post request containing the new status of the CI server.
+	"""
     status_url_sha = status_url.replace('{sha}',sha) 
     post_url = status_url_sha[:8] + auth_token + ':x-oauth-basic@' + status_url_sha[8:]
     

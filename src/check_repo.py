@@ -1,6 +1,15 @@
 import subprocess as s
 
-def check(url, repo, branch):                                                                                                                                                                                                                                                                           
+def check(url, repo, branch): 
+    """
+    A method for compiling and testing a repository branch.
+    Input: url for cloning repository, repository name and branch name.
+    Output: status code and message for potential errors.
+    Returncode 0 means successful compilation and testing.
+    Returncode 1 means compilation error.
+    Returncode 2 means failed tests.
+    Returncode 3 means missing/invalid script file for running the check.
+    """
     s.run(['git', 'clone', url])                                 
     s.run(['git', '-C', repo, 'checkout', branch])           
     

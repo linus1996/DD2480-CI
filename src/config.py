@@ -4,18 +4,15 @@ from os.path import abspath
 api_token = ''
 
 mongo_database_name = ''
-mongo_ip = ''
-mongo_port = ''
-mongo_user = ''
-mongo_pass = ''
+mongo_url = ''
 
 def init(conf_file = None):
+    """
+    A method for initializing the configuration and assigns values to the global variables.
+    """
     global api_token
     global mongo_database_name
-    global mongo_ip
-    global mongo_port
-    global mongo_user
-    global mongo_pass
+    global mongo_url
     
     config = configparser.ConfigParser()
 
@@ -27,7 +24,4 @@ def init(conf_file = None):
     api_token = config['Notification']['api_token']
 
     mongo_database_name = config['Database']['name']
-    mongo_ip = config['Database']['ip']
-    mongo_port = config['Database']['port']
-    mongo_user = config['Database']['user']
-    mongo_pass = config['Database']['password']
+    mongo_url = config['Database']['url']

@@ -1,13 +1,13 @@
 import requests
 import json
 
-"""
-A method for creating status updates for the CI server.
-Input: A json payload containing repository information, the current status of the CI server and an authorization token.
-Output: A post request containing the new status of the CI server.
-"""
+
 def update_status(json_payload, status, auth_token):
-	
+	"""
+	A method for creating status updates for the CI server.
+	Input: A json payload containing repository information, the current status of the CI server and an authorization token.
+	Output: A post request containing the new status of the CI server.
+	"""
 	sha = json_payload['head_commit']['id'] 
 	status_url = json_payload["repository"]['statuses_url'] 
 	status_url_sha = status_url.replace('{sha}',sha) 

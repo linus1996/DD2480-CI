@@ -3,20 +3,22 @@ pkg_resources.require("pymongo==4.1.1")
 from pymongo import MongoClient
 from urllib.parse import quote_plus
 
-"""
-    A class for handling fetching and storing of build history in a MongoDB database.
-"""
-class History:
 
+class History:
     """
-     A method for initiate contact with the database.
-     Input: database name, database ip, database port, username and password.
+    A class for handling fetching and storing of build history in a MongoDB database.
     """
+
+
     def __init__(self, mongo_name,
                  mongo_ip,
                  mongo_port,
                  mongo_user,
                  mongo_pass):
+        """
+        A method for initiating contact with the database.
+        Input: database name, database ip, database port, username and password.
+        """ 
         
         self.mongo_client = MongoClient("mongodb+srv://group17:dd2480group17@cluster0.undpmzo.mongodb.net/?retryWrites=true&w=majority")
 
@@ -39,48 +41,47 @@ class History:
 
         self.db = self.mongo_client[mongo_name]
 
-    """
-    A method for inserting build information in the database.
-    Input: serialized build information.
-    """
+
     def insert_build(self, document):
+        """
+        A method for inserting build information in the database.
+        Input: serialized build information.
+        """
         builds = self.db['builds']
         builds.insert_one(document)
 
-<<<<<<< HEAD
-    """
-    A method for fetching a specific builds information.
-    Input: id of the build that is needed.
-    """
-    def fetch(self, build_id):
-        return self.db['builds'].find_one({"buildID": float(build_id)})
-=======
     def fetch(self, id):
+        """
+        A method for retrieving build information about a particular build.
+        Input: build ID, which is the identifier.
+        """
         return self.db['builds'].find_one({"_id": id})
->>>>>>> main
 
-    """
-    A method for fetching the last n builds information.
-    Input: the amount n of builds which information is needed.
-    """
+
     def fetch_n_last(self, n):
+        """
+        A method for fetching the last n builds information.
+        Input: n, which is the number of builds which information is to be fetched.
+        """
         nr_documents = self.db['builds'].count()
         if(nr_documents < n):
             return self.db['builds'].find()
         return self.db['builds'].find().skip(nr_documents - n)
     
-    """
-    A method for fetching information of all the builds in the database.
-    """
+
     def fetch_all(self):
+        """
+        A method for fetching information of all the builds in the database.
+        """
         return self.db['builds'].find()
 
-    """
-    A method for serializeing build information to prepare it for database insertion.
-    Input: id of build, date of commit, CI status, url of commit and error message.
-    """
+
     @staticmethod
     def serialize(id, date, status, commit_url, stderr):
+        """
+        A method for serializeing build information to prepare it for database insertion.
+        Input: id of build, date of commit, CI status, url of commit and error message.
+        """
         return {
             "_id": id,
             "date": date,

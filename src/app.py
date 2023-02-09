@@ -83,5 +83,5 @@ def handle_post():
 if __name__ == '__main__':
     global history
     config.init('ci.ini')
-    history = History(config.mongo_database_name, config.mongo_ip, config.mongo_port, config.mongo_user, config.mongo_pass)
+    history = History(config.mongo_database_name, config.mongo_url)
     app.run(debug=True, port=8017)

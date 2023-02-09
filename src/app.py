@@ -1,5 +1,6 @@
 import pkg_resources
 pkg_resources.require("flask==2.0.3")
+pkg_resources.require("pymongo==4.1.1")
 from flask import Flask, jsonify, request, render_template
 from check_repo import check
 from communication.notifications import update_status
@@ -12,12 +13,16 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def handle_get():
-    # return jsonify('GET REQUEST RECEIVED')
+    """
+    Handler to display the landing page. 
+    """
     return render_template('index.html')
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
-    # return render_template('history.html')
+    """
+    Handler to display the build history. Tries to fetch all entries but displays an empty list if something is wrong with the fetched data. 
+    """
     try:
         return render_template('history.html', buildlist=history.fetch_all())
     except:
@@ -25,7 +30,9 @@ def show_builds():
 
 @app.route('/builds/<id>', methods=['GET'])
 def show_build(id):
-    # return render_template('build.html', build = {'url':'https://github.com'})
+    """
+    Handler to display a specific build as a html page. 
+    """
     try:
         return render_template('build.html', build=history.fetch(id))
     except:
@@ -33,6 +40,9 @@ def show_build(id):
 
 @app.route('/', methods=['POST'])
 def handle_post():
+    """
+    Handler for post requests from GitHub repo. Outputs the request statuses to the console running the application. If something goes wrong it sends the landing page instead. 
+    """
     try:
         data = loads(request.form['payload'])
         # extract relevant data
@@ -67,7 +77,6 @@ def handle_post():
         print("build inserted")
         return 'POSt REQUEST PROCESSED SUCCESSFULLY'
     except:
-        # return 'POST REQUEST PROCESSED SUCCESSFULLY'
         return render_template('index.html')
 
 # main driver function

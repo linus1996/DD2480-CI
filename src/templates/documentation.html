@@ -28,7 +28,7 @@
         <div class="row justify-content-center">
             <table class="table table-bordered text-light w-auto">
                 <tr>
-                    <td colspan="2" class="lead py-2 text-center" style="font-family:monospace;">def update_status(json_payload, status, auth_token):</td>
+                    <td colspan="2" class="lead py-2 text-center" style="font-family:monospace;">def update_status(sha, status_url, status, auth_token):</td>
                 </tr>
                 <tr>
                     <th><small>Description</small></th>
@@ -39,8 +39,12 @@
                     <td>
                         <ul>
                             <li class="pb-4" style="font-family:monospace;">
-                                json_payload
-                                <br> <small style="font-family:sans-serif;">The JSON data coming from the push param status - </small>
+                                sha
+                                <br> <small style="font-family:sans-serif;">The commit ID. - </small>
+                            </li>
+                            <li class="pb-4" style="font-family:monospace;">
+                                status_url
+                                <br> <small style="font-family:sans-serif;">The GitHub API url to send the request to. - </small>
                             </li>
                             <li class="pb-4" style="font-family:monospace;">
                                 status

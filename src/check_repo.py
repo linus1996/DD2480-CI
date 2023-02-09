@@ -21,7 +21,7 @@ def check(url, repo, branch):
         status.returncode = 3
         status.stderr = 'Error: Missing compilation/test script file.'
     else:
-        status = s.run(['sh', 'src/scripts.sh'])  
+        status = s.run(['sh', 'src/scripts.sh'], stderr=s.PIPE)  
 
     s.run(['rm', '-rf', repo])
     if status.returncode == 0:

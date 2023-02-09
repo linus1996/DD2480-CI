@@ -13,7 +13,7 @@ The program was written by the group members together, often in meetings involvi
 
 Ali: Implemented core CI feature #1 an #2 with Klara, wrote README, wrote documentations, created test branches and tests for CI server.
 
-Axel:
+Axel: Set up Ngrok hosting, set up Flask application and create request handlers, connect to MongoDB, fix Rest API to set commit status, incorporate HTML into application. 
 
 Klara: Creating initial issues, implementing core CI feature #1 and #2 together with Ali, some documentation, writing Essence document.
 

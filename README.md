@@ -19,15 +19,19 @@ From the root of the repo, run `python3 src/app.py` to start the application. Th
 
 To run static check and unittests locally, run `sh src/scripts.sh`. 
 
+### Documentation
+
 To generate documentation in the form of a html file, run the `generate_docs.sh` script using `sh generate_docs.sh`. The html file will be in the documentation folder.
+
+The documentation can also be browsed through the frontend when the server is running. It's *highly* interactive! 
 
 ## Statement of Contributions
 
 The program was written by the group members together, often in meetings involving all or most of the members. Several parts of the startup, such as the code and git structure, was done collectively by most of the group. The rest of the work was divided among the members, see below.
 
-Ali: Implemented core CI feature #1 an #2 with Klara, wrote README, wrote documentations, created test branches and tests for CI server.
+Ali: Implemented core CI feature #1 an #2 with Klara, wrote README, wrote documentations, created test branches and tests for CI server. Help identifying problems with build error messages not being properly saved and making html documentation browsable in frontend. 
 
-Axel: Set up Ngrok hosting, set up Flask application and create request handlers, connect to MongoDB, fix Rest API to set commit status, incorporate HTML into application. 
+Axel: Set up Ngrok hosting, set up Flask application and create request handlers, connect to MongoDB, fix Rest API to set commit status, incorporate HTML into application. Make it so failed builds include the actual error message and make html documentation browsable in frontend.
 
 Klara: Creating initial issues, implementing core CI feature #1 and #2 together with Ali, some documentation, writing Essence document.
 

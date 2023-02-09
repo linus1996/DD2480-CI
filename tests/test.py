@@ -1,4 +1,4 @@
-import unittest
+pimport unittest
 
 class TestP2(unittest.TestCase):
 

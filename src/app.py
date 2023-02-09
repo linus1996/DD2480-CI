@@ -18,6 +18,10 @@ def handle_get():
     """
     return render_template('index.html')
 
+@app.route('/documentation', methods=['GET'])
+def show_documentation():
+    return render_template('documentation.html')
+
 @app.route('/builds', methods=['GET'])
 def show_builds():
     """

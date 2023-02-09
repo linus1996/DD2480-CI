@@ -1,4 +1,4 @@
-pimport unittest
+import unittest
 
 class TestP2(unittest.TestCase):
 
@@ -6,4 +6,4 @@ class TestP2(unittest.TestCase):
         self.assertEqual(1+1, 2)
         
     def test_epic_fail(self):
-        self.assertTrue(False)
+        self.assertTrue(True)

@@ -7,7 +7,6 @@ from communication.notifications import update_status
 import config
 from server.history import History
 from json import loads, dumps
-
 # Application:
 app = Flask(__name__)
 
@@ -18,9 +17,12 @@ def handle_get():
     """
     return render_template('index.html')
 
+app.jinja_env.comment_start_string = '{='
+app.jinja_env.comment_end_string = '=}'
+
 @app.route('/documentation', methods=['GET'])
 def show_documentation():
-    return render_template('documentation.html')
+    return render_template('app.html')
 
 @app.route('/builds', methods=['GET'])
 def show_builds():
@@ -72,13 +74,17 @@ def handle_post():
         update_status(id, status_url, status, config.api_token)
         print("status updated")
         # insert into database
-        build = history.serialize(commit_id, timestamp, status, commit_url, result.stderr if result.stderr is not None else '')
-        print("calling insert_build("+dumps(build)+")")
+        try:
+            build = history.serialize(commit_id, timestamp, status, commit_url, result.stderr if result.stderr is not None else '')
+            print("calling insert_build("+dumps(build)+")")
+        except:
+            print("couldn't generate build")
+            return 'Build error'
         try:
             history.insert_build(build)
+            print("build inserted")
         except:
-            return 'Duplicate key'
-        print("build inserted")
+            return 'Requested commit already tested'
         return 'POST REQUEST PROCESSED SUCCESSFULLY'
     except:
         return render_template('index.html')

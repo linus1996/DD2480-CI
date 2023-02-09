@@ -1,4 +1,5 @@
 import subprocess as s
+from sys import stderr
 
 def check(url, repo, branch): 
     """
@@ -21,7 +22,13 @@ def check(url, repo, branch):
         status.returncode = 3
         status.stderr = 'Error: Missing compilation/test script file.'
     else:
-        status = s.run(['sh', 'src/scripts.sh'], stderr=s.PIPE)  
+        status = s.run(['sh', 'src/scripts.sh'], stderr=s.PIPE)
+        # _, std_err = status.communicate()
+        status.stderr = status.stderr.decode()
+        # with open('<stderr>', 'r') as f:
+        #     status.stderr = f.read()
+        #     print(status.stderr)
+        # status.stderr = status.stderr.communicate()[0]
 
     s.run(['rm', '-rf', repo])
     if status.returncode == 0:

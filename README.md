@@ -19,7 +19,7 @@ Klara: Creating initial issues, implementing core CI feature #1 and #2 together 
 
 Linus: Created notification file with Axel, wrote README, wrote documentations, wrote Essence document.
 
-Maegan:
+Maegan: Created the frontend for the webpages, helped with the setting up of MongoDB, and some documentation.
 
 ## Contributors
 

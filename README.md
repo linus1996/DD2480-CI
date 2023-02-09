@@ -5,7 +5,21 @@ A small continuous integration CI server. This CI server only contains the core 
 
 ## How to use
 
+### Set up config for new repository
+
+1. In `ci.ini`, add a personal access token with permissions for the public repository as well as the name of the MongoDB database and its API url.
+
+2. Use Ngrok to set up a routing URL to localhost port 8017 for the webhook using `ngrok http 8017` and add the Ngrok URL as a webhook to the repo. 
+
 ### Running the code
+
+Make sure to have python3 installed and run `pip3 install -r requirements.txt` to install the dependencies. 
+
+From the root of the repo, run `python3 src/app.py` to start the application. That's it. 
+
+To run static check and unittests locally, run `sh src/scripts.sh`. 
+
+To generate documentation in the form of a html file, run the `generate_docs.sh` script using `sh generate_docs.sh`. The html file will be in the documentation folder.
 
 ## Statement of Contributions
 
